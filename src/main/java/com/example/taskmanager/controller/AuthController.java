@@ -1,6 +1,5 @@
 package com.example.taskmanager.controller;
 
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,16 +33,21 @@ public class AuthController {
                 .role(request.getRole())
                 .build();
         userRepository.save(user);
-        return "User registered successfully";
+        return "Usuário registrado com sucesso!";
     }
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
+        System.out.println("Senha enviada: " + request.getPassword());
+        System.out.println("Senha no banco: " + user.getPassword());
+        System.out.println("Password matches? " + passwordEncoder.matches(request.getPassword(), user.getPassword()));
+        
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
+            throw new RuntimeException("senha inválida");
+            
         }
 
         String token = jwtService.generateToken(user);
