@@ -1,0 +1,42 @@
+📦 Dependências:
+
+    -> Spring Web
+    -> Spring Data JPA
+    -> Spring Security
+    -> Spring Boot DevTools
+    -> Lombok
+    -> Validation
+    -> MySQL Driver (ou PostgreSQL Driver)
+
+📌 Organização de Pacotes
+
+    src/main/java/com/example/taskmanager
+    ├── config           (configurações de segurança e JWT)
+    ├── controller       (controllers REST)
+    ├── model            (entidades JPA)
+    ├── repository       (interfaces de repositórios)
+    ├── service          (lógica de negócio)
+    └── dto              (objetos de transferência de dados)
+
+🚀 Configuração do banco MySQL
+
+    🛠 No MySQL:
+        CREATE DATABASE taskmanager_db;
+        CREATE USER 'taskuser'@'localhost' IDENTIFIED BY 'taskpass';
+        GRANT ALL PRIVILEGES ON taskmanager_db.* TO 'taskuser'@'localhost';
+        FLUSH PRIVILEGES;
+
+Teste Postman
+http://localhost:8080/auth/register
+
+{
+    "name": "Renata Casoni",
+    "email": "renata@dominio.com",
+    "password": "senha123",
+    "role": "USER"
+}
+
+{
+    "email": "renata@dominio.com",
+    "password": "senha123"
+}
