@@ -1,5 +1,8 @@
 # TaskManager - Spring Boot Application
 
+Liz Brito                                 R.A: 22240941-2
+Renata Casoni                             R.A: 22272753-2
+Lorenzo Begnozzi                          R.A: 23067179-2
 ## Overview
 
 Aplicação Spring Boot com autenticação JWT e gerenciamento de usuários. Ele permite o registro de novos usuários, login e acesso a recursos protegidos. O sistema de segurança usa um filtro JWT para proteger endpoints e garantir que somente usuários autenticados possam acessar recursos sensíveis.
